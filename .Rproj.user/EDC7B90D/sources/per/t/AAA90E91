@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1644870713755.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3143137984",
+    "id" : "AAA90E91",
+    "lastKnownWriteTime" : 1644929114,
+    "last_content_update" : 1644929114284,
+    "path" : "~/Documents/GitHub/lipids/analysis/report.R",
+    "project_path" : "analysis/report.R",
+    "properties" : {
+        "cursorPosition" : "76,0",
+        "scrollLine" : "61",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -39,3 +39,4 @@ actions:
     outputs:
       moderately_sensitive:
         reports: output/cohort_reports_outputs/descriptives_input.html
+        reports_charts: output/cohort_reports_outputs/*.png

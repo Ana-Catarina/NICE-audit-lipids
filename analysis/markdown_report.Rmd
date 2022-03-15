@@ -1,0 +1,156 @@
+---
+title: "Lipids Audit"
+author: "Rob Willans"
+date: "15/03/2022"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(janitor)
+
+knitr::opts_chunk$set(echo = TRUE)
+
+
+## Load data from cohort extractor
+df_input <- read_csv(
+  here::here("output", "input.csv")
+  )
+
+```
+
+## Number of patients with CVD
+
+```{r CVD_n}
+
+df_cvd <- df_input %>%
+  filter(CVD_code == 1)
+
+nrow(df_cvd)
+
+```
+
+## Number of patients with CKD
+
+```{r CKD_n}
+
+df_ckd <- df_input %>%
+  filter(CKD_code == 1)
+
+nrow(df_ckd)
+
+```
+
+## N after excluding under 40s 
+
+```{r under40_n}
+
+df_input_40plus <- df_input %>%
+  filter(age <= 40)
+
+nrow(df_input_40plus)
+
+```
+
+## N after excluding people with CVD, CKD, T1D
+
+```{r noCVDCKDT1D}
+
+df_no_comorbs_over40 <- df_input %>% 
+  filter(age <= 40,
+         CVD_code == 0,
+         CKD_code == 0, 
+         T1D_code == 0)
+
+nrow(df_no_comorbs_over40)
+
+```
+## N after excluding patients with risk assessment more than 5 years ago
+
+```{r excluderiskassessmorethanfiveyears}
+
+df_input_2 <- df_input %>% 
+  filter(age <= 40,
+         CVD_code == 0,
+         CKD_code == 0, 
+         T1D_code == 0,
+         CVD_assess_latest_date >= "2017-01-01")
+
+```
+
+## calculate % patients with CVD assessment in past 5 years
+
+```{r addCVDriskcat}
+
+df_input_2 <- df_input_2 %>% 
+  mutate("CVD_assess_cat" = case_when(is.na(CVD_assess_latest_number) ~ "CVD Risk Assessment",
+                                      TRUE ~ "No CVD Risk Assessment Noted"))
+
+df_input_2 %>% 
+  group_by(CVD_assess_cat) %>% 
+  summarise(n = n(), Percentage = n/nrow(df_input_2)*100, .groups = "keep") %>% 
+  ungroup()
+         
+```
+
+## calculate % patients with CVD risk over 10 on statins
+
+```{r CVDgreaterthan10statins}
+
+data_risk10 <- df_input_2 %>% 
+  filter(CVD_assess_latest_number >= 10) %>% 
+  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
+                                  TRUE ~ "Statins Recorded"))
+
+data_risk10 %>% 
+  group_by(statin_cat) %>% 
+  summarise(n = n(), percentage = n/nrow(data_risk10))
+
+```
+
+## calculate % patients with CVD risk over 20 on statins
+
+```{r CVDgreaterthan20statins}
+
+data_risk20 <- df_input_2 %>% 
+  filter(CVD_assess_latest_number >= 20) %>% 
+  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
+                                  TRUE ~ "Statins Recorded"))
+
+data_risk10 %>% 
+  group_by(statin_cat) %>% 
+  summarise(n = n(), percentage = n/nrow(data_risk20))
+
+```
+
+
+## calculate % patients with pre-existing CVD on statins
+
+```{r preexistCVDgtatins}
+
+df_cvd <- df_cvd %>% 
+  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
+                                  TRUE ~ "Statins Recorded"))
+
+df_cvd %>% 
+  group_by(statin_cat) %>% 
+  summarise(n = n(), percentage = n/nrow(df_cvd))
+
+```
+
+## calculate % patients with CKD on statins
+
+```{r preexistCKDgtatins}
+
+df_ckd <- df_ckd %>% 
+  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
+                                  TRUE ~ "Statins Recorded"))
+
+df_ckd %>% 
+  group_by(statin_cat) %>% 
+  summarise(n = n(), percentage = n/nrow(df_ckd))
+
+```

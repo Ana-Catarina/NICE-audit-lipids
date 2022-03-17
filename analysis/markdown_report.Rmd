@@ -120,7 +120,7 @@ data_risk20 <- df_input_2 %>%
   mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
                                   TRUE ~ "Statins Recorded"))
 
-data_risk10 %>% 
+data_risk20 %>% 
   group_by(statin_cat) %>% 
   summarise(n = n(), percentage = n/nrow(data_risk20))
 

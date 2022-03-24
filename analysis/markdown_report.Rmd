@@ -86,8 +86,8 @@ df_input_2 <- df_input %>%
 ```{r addCVDriskcat}
 
 df_input_2 <- df_input_2 %>% 
-  mutate("CVD_assess_cat" = case_when(is.na(CVD_assess_latest_number) ~ "CVD Risk Assessment",
-                                      TRUE ~ "No CVD Risk Assessment Noted"))
+  mutate("CVD_assess_cat" = case_when(is.na(CVD_assess_latest_number) ~ "No CVD Risk Assessment Noted",
+                                      TRUE ~ "CVD Risk Assessment"))
 
 df_input_2 %>% 
   group_by(CVD_assess_cat) %>% 

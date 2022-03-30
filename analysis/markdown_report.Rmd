@@ -39,7 +39,7 @@ nrow(df_input)
 
 ```
 
-## Number of patients with CVD
+## Number of patients with CVD (all ages)
 
 ```{r CVD_n}
 
@@ -52,7 +52,7 @@ df_cvd %>%
 
 ```
 
-## Number of patients with CKD
+## Number of patients with CKD (all ages)
 
 ```{r CKD_n}
 
@@ -65,7 +65,7 @@ df_ckd %>%
 ```
 
 
-## N after excluding people with CVD, CKD, T1D
+## N after excluding people with CVD, CKD, T1D and under 40s
 
 ```{r noCVDCKDT1D}
 
@@ -78,7 +78,8 @@ df_no_comorbs_over40 <- df_input %>%
 nrow(df_no_comorbs_over40)
 
 ```
-## N after excluding patients with risk assessment more than 5 years ago
+
+## N after also excluding patients with risk assessment more than 5 years ago 
 
 ```{r excluderiskassessmorethanfiveyears}
 
@@ -91,7 +92,7 @@ df_input_2 <- df_input %>%
 
 ```
 
-## calculate % patients with CVD assessment in past 5 years
+## calculate % patients with CVD assessment in past 5 years (40 and over)
 
 ```{r addCVDriskcat}
 
@@ -106,7 +107,7 @@ df_input_2 %>%
          
 ```
 
-## calculate % patients with CVD risk over 10 on statins
+## calculate % patients with CVD risk over 10 on statins (40 and over)
 
 ```{r CVDgreaterthan10statins}
 
@@ -117,11 +118,12 @@ data_risk10 <- df_input_2 %>%
 
 data_risk10 %>% 
   group_by(statin_cat) %>% 
-  summarise(n = n(), percentage = n/nrow(data_risk10))
+  summarise(n = n(),
+            percentage = n/nrow(data_risk10))
 
 ```
 
-## calculate % patients with CVD risk over 20 on statins
+## calculate % patients with CVD risk over 20 on statins (40 and over)
 
 ```{r CVDgreaterthan20statins}
 
@@ -137,7 +139,7 @@ data_risk20 %>%
 ```
 
 
-## calculate % patients with pre-existing CVD on statins
+## calculate % patients with pre-existing CVD on statins 
 
 ```{r preexistCVDgtatins}
 
@@ -151,7 +153,7 @@ df_cvd %>%
 
 ```
 
-## calculate % patients with CKD on statins
+## calculate % patients with CKD on statins (40 and over)
 
 ```{r preexistCKDgtatins}
 

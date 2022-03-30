@@ -151,13 +151,12 @@ df_cvd <- df_cvd %>%
                                   TRUE ~ "Statins Recorded"))
 
 df_cvd %>% 
-  group_by(statin_cat) %>% 
+  group_by(age_group, statin_cat) %>% 
   summarise(n = n(), percentage = n/nrow(df_cvd))
 
 ```
 
-## calculate % patients with CKD on statins (40 and over)
-
+## calculate % patients with CKD on statins 
 ```{r preexistCKDgtatins}
 
 df_ckd <- df_ckd %>% 
@@ -165,7 +164,7 @@ df_ckd <- df_ckd %>%
                                   TRUE ~ "Statins Recorded"))
 
 df_ckd %>% 
-  group_by(statin_cat) %>% 
+  group_by(age_group, statin_cat) %>% 
   summarise(n = n(), percentage = n/nrow(df_ckd))
 
 ```

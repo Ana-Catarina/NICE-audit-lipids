@@ -90,6 +90,9 @@ df_input_2 <- df_input %>%
          T1D_code == 0,
          CVD_assess_latest_date >= "2017-01-01")
 
+nrow(df_input_2)
+
+
 ```
 
 ## calculate % patients with CVD assessment in past 5 years (40 and over)

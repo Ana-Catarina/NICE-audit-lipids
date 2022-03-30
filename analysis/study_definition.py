@@ -9,7 +9,7 @@ study = StudyDefinition(
         "incidence": 0.5,
     },
     population = patients.satisfying("""
-                                     registered AND (pat_age >= 40) AND pat_age <85
+                                     registered AND pat_age <85
                                      """,
                                      registered = patients.registered_as_of("2021-03-31"),
                                      pat_age = patients.age_as_of("2017-01-01"),

@@ -18,7 +18,24 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Load data from cohort extractor
 df_input <- read_csv(
   here::here("output", "input.csv")
-  )
+  ) %>% 
+  mutate(age_group = case_when(age >= 40 ~ "40+",
+                               age < 40 ~ "Under 40",
+                               TRUE ~ "No age"))
+
+summarise_df_by_age_group <- function(df){
+  df %>% 
+    group_by(age_group) %>% 
+    summarise(n=n())
+}
+
+```
+
+## Total N
+
+```{r}
+
+nrow(df_input)
 
 ```
 
@@ -29,7 +46,9 @@ df_input <- read_csv(
 df_cvd <- df_input %>%
   filter(CVD_code == 1)
 
-nrow(df_cvd)
+
+df_cvd %>% 
+  summarise_df_by_age_group()
 
 ```
 
@@ -40,27 +59,18 @@ nrow(df_cvd)
 df_ckd <- df_input %>%
   filter(CKD_code == 1)
 
-nrow(df_ckd)
+df_ckd %>% 
+  summarise_df_by_age_group()
 
 ```
 
-## N after excluding under 40s 
-
-```{r under40_n}
-
-df_input_40plus <- df_input %>%
-  filter(age <= 40)
-
-nrow(df_input_40plus)
-
-```
 
 ## N after excluding people with CVD, CKD, T1D
 
 ```{r noCVDCKDT1D}
 
 df_no_comorbs_over40 <- df_input %>% 
-  filter(age <= 40,
+  filter(age >= 40,
          CVD_code == 0,
          CKD_code == 0, 
          T1D_code == 0)
@@ -73,7 +83,7 @@ nrow(df_no_comorbs_over40)
 ```{r excluderiskassessmorethanfiveyears}
 
 df_input_2 <- df_input %>% 
-  filter(age <= 40,
+  filter(age >= 40,
          CVD_code == 0,
          CKD_code == 0, 
          T1D_code == 0,

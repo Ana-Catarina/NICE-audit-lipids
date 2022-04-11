@@ -16,20 +16,37 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Load data from cohort extractor
-df_input <- read_csv(
-  here::here("output", "input.csv")
-  ) %>% 
-  mutate(age_group = case_when(age >= 40 ~ "40+",
-                               age < 40 ~ "Under 40",
-                               TRUE ~ "No age"))
+df_input <- read_csv(here::here("output", "input.csv")) %>%
+  mutate(
+    "age_group" = case_when(
+      age < 40 ~ "18-39",
+      age < 60 ~ "40-59",
+      age < 80 ~ "60-79",
+      age >= 80 ~ "80-84",
+      TRUE ~ "No age"
+    ),
+    "CVD_assess_cat" = case_when(
+      is.na(CVD_assess_latest_number) ~ "No CVD Risk Assessment Noted",
+      TRUE ~ "CVD Risk Assessment"
+    ),
+    "statin_cat" = case_when(
+      is.na(statins_prescribed) ~ "No Statin Recorded",
+      TRUE ~ "Statins Recorded"
+    )
+  )
+  
 
-summarise_df_by_age_group <- function(df){
+summarise_df_by_group <- function(df, ...){
   df %>% 
-    group_by(age_group) %>% 
-    summarise(n=n())
+    group_by(...) %>% 
+    summarise(n=n(),
+              percentage = n / nrow(.)*100, .groups = "keep") %>% 
+    ungroup()
 }
 
 ```
+
+# Initial counts
 
 ## Total N
 
@@ -39,132 +56,154 @@ nrow(df_input)
 
 ```
 
-## Number of patients with CVD (all ages)
+## N with CVD diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
 
 ```{r CVD_n}
 
-df_cvd <- df_input %>%
-  filter(CVD_code == 1)
-
-
-df_cvd %>% 
-  summarise_df_by_age_group()
+df_input %>%
+  filter(CVD_code == 1) %>% 
+  summarise_df_by_group(age_group)
 
 ```
 
-## Number of patients with CKD (all ages)
+## N with CKD diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
 
 ```{r CKD_n}
 
-df_ckd <- df_input %>%
-  filter(CKD_code == 1)
-
-df_ckd %>% 
-  summarise_df_by_age_group()
+df_input %>%
+  filter(CKD_code == 1) %>% 
+  summarise_df_by_group(age_group)
 
 ```
 
+## N with T1D diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
 
-## N after excluding people with CVD, CKD, T1D and under 40s
+```{r T1D_n}
+
+df_input %>%
+  filter(T1D_code == 1) %>% 
+  summarise_df_by_group(age_group)
+
+```
+
+## N with T2D diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+
+```{r T2D_n}
+
+df_input %>%
+  filter(T2D_code == 1) %>% 
+  summarise_df_by_group(age_group)
+
+```
+
+## N with any DM diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+
+```{r anyDcode_n}
+
+df_input %>%
+  filter(Overall_diab_code == 1) %>% 
+  summarise_df_by_group(age_group)
+
+```
+
+## N excluding CVD, CKD, T1D (aged 40-84 at 2022-01-01)
+
 
 ```{r noCVDCKDT1D}
 
-df_no_comorbs_over40 <- df_input %>% 
+df_input %>% 
   filter(age >= 40,
          CVD_code == 0,
          CKD_code == 0, 
-         T1D_code == 0)
-
-nrow(df_no_comorbs_over40)
+         T1D_code == 0) %>% 
+  nrow()
 
 ```
 
-## N after also excluding patients with risk assessment more than 5 years ago 
+## N excluding CVD, CKD, T1D and risk assessment more than 5 years ago (aged 40-84 at 2022-01-01)
 
 ```{r excluderiskassessmorethanfiveyears}
 
-df_input_2 <- df_input %>% 
+df_input %>% 
   filter(age >= 40,
          CVD_code == 0,
          CKD_code == 0, 
          T1D_code == 0,
-         CVD_assess_latest_date >= "2017-01-01")
-
-nrow(df_input_2)
+         CVD_assess_latest_date >= "2017-01-01") %>% 
+  nrow()
 
 
 ```
 
-## calculate % patients with CVD assessment in past 5 years (40 and over)
+
+# Calculations
+
+## Calculate % patients with CVD assessment in past 5 years
 
 ```{r addCVDriskcat}
 
-df_input_2 <- df_input_2 %>% 
-  mutate("CVD_assess_cat" = case_when(is.na(CVD_assess_latest_number) ~ "No CVD Risk Assessment Noted",
-                                      TRUE ~ "CVD Risk Assessment"))
-
-df_input_2 %>% 
-  group_by(CVD_assess_cat) %>% 
-  summarise(n = n(), Percentage = n/nrow(df_input_2)*100, .groups = "keep") %>% 
-  ungroup()
+df_input %>% 
+  summarise_df_by_group(sex, age_group, CVD_assess_cat)
          
 ```
 
-## calculate % patients with CVD risk over 10 on statins (40 and over)
+## Calculate % patients (by sex and age group) with prior CVD diag (on or before 2022-01-01) and statin prescription (on or before 2022-01-01)
+
+```{r CVD }
+
+df_input %>% 
+  filter(CVD_code == 1) %>% 
+  summarise_df_by_group(sex, age_group, statin_cat) 
+
+```
+## Calculate % patients (total) with prior CVD diag (on or before 2022-01-01) and statin prescription (on or before 2022-01-01)
+
+```{r CVDtotal}
+
+df_input %>% 
+  filter(CVD_code == 1) %>% 
+  summarise_df_by_group(statin_cat) 
+
+```
+
+## Calculate % patients (by sex and age group) with CVD risk over 10 with statin prescription
 
 ```{r CVDgreaterthan10statins}
 
-data_risk10 <- df_input_2 %>% 
+df_input %>% 
   filter(CVD_assess_latest_number >= 10) %>% 
-  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
-                                  TRUE ~ "Statins Recorded"))
+  summarise_df_by_group(sex, age_group, statin_cat) 
 
-data_risk10 %>% 
-  group_by(statin_cat) %>% 
-  summarise(n = n(),
-            percentage = n/nrow(data_risk10))
 
 ```
 
-## calculate % patients with CVD risk over 20 on statins (40 and over)
+## Calculate % patients (by sex and age group) with CVD risk over 20 with statin prescription
 
 ```{r CVDgreaterthan20statins}
 
-data_risk20 <- df_input_2 %>% 
+df_input %>% 
   filter(CVD_assess_latest_number >= 20) %>% 
-  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
-                                  TRUE ~ "Statins Recorded"))
-
-data_risk20 %>% 
-  group_by(statin_cat) %>% 
-  summarise(n = n(), percentage = n/nrow(data_risk20))
+  summarise_df_by_group(sex, age_group, statin_cat) 
 
 ```
 
+## calculate % patients with CKD on statins (split sex and age group)
 
-## calculate % patients with pre-existing CVD on statins 
-
-```{r preexistCVDgtatins}
-
-df_cvd <- df_cvd %>% 
-  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
-                                  TRUE ~ "Statins Recorded"))
-
-df_cvd %>% 
-  group_by(age_group, statin_cat) %>% 
-  summarise(n = n(), percentage = n/nrow(df_cvd))
-
-```
-
-## calculate % patients with CKD on statins 
 ```{r preexistCKDgtatins}
 
-df_ckd <- df_ckd %>% 
-  mutate("statin_cat" = case_when(is.na(statins_prescribed) ~ "No Statin Recorded",
-                                  TRUE ~ "Statins Recorded"))
+df_input %>% 
+  filter(CKD_code == 1) %>% 
+  summarise_df_by_group(sex, age_group, statin_cat) 
 
-df_ckd %>% 
-  group_by(age_group, statin_cat) %>% 
-  summarise(n = n(), percentage = n/nrow(df_ckd))
+
+```
+
+
+## calculate % patients with CKD on statins (total)
+
+```{r preexistCKDstatinstotal}
+df_input %>% 
+  filter(CKD_code == 1) %>% 
+  summarise_df_by_group(statin_cat) 
 
 ```

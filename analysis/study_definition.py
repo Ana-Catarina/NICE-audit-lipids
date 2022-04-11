@@ -9,10 +9,10 @@ study = StudyDefinition(
         "incidence": 0.5,
     },
     population = patients.satisfying("""
-                                     registered AND pat_age <85
+                                     registered AND (pat_age <85 AND pat_age>17)
                                      """,
-                                     registered = patients.registered_as_of("2021-03-31"),
-                                     pat_age = patients.age_as_of("2017-01-01"),
+                                     registered = patients.registered_as_of("2022-01-01"),
+                                     pat_age = patients.age_as_of("2022-01-01"),
                                      ),
 
     age=patients.age_as_of(
@@ -32,7 +32,7 @@ study = StudyDefinition(
 
     CVD_assess_latest_number = patients.with_these_clinical_events(
         CVD_assess_codes,
-        between = ["2017-01-01", "2022-01-01"],
+        on_or_before = "2022-01-01",
         returning = "numeric_value",
         find_last_match_in_period = True,
         return_expectations = {"float": {"distribution": "normal", "mean": 0.1, "stddev": 0.04}, "incidence": 0.1}
@@ -40,7 +40,7 @@ study = StudyDefinition(
         
     CVD_assess_latest_date = patients.with_these_clinical_events(
         CVD_assess_codes,
-        between = ["2017-01-01", "2022-01-01"],
+        on_or_before = "2022-01-01",
         returning = "date",
         date_format = "YYYY-MM-DD",
         find_last_match_in_period = True,
@@ -52,7 +52,7 @@ study = StudyDefinition(
                                                     ),
     
     statins_prescribed = patients.with_these_medications(statin_codes,
-                                                         between = ["2017-01-01", "2022-01-01"],
+                                                         on_or_before = "2022-01-01",
                                                          returning = "date",
                                                          date_format = "YYYY-MM-DD",
                                                          return_last_date_in_period = True,
@@ -60,31 +60,31 @@ study = StudyDefinition(
         ),
         
     CKD_code = patients.with_these_clinical_events(CKD_codes,
-                                                   between = ["2017-01-01", "2022-01-01"],
+                                                   on_or_before = "2022-01-01",
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.1}
                                                    ),
     
     CVD_code = patients.with_these_clinical_events(CVD_codes,
-                                                   between = ["2017-01-01", "2022-01-01"],
+                                                   on_or_before = "2022-01-01",
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.2}
                                                    ),
                                                    
     T1D_code = patients.with_these_clinical_events(T1D_codes,
-                                                   between = ["2017-01-01", "2022-01-01"],
+                                                   on_or_before = "2022-01-01",
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.1}
                                                    ),
                                                    
     T2D_code = patients.with_these_clinical_events(T2D_codes,
-                                                   between = ["2017-01-01", "2022-01-01"],
+                                                   on_or_before = "2022-01-01",
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.2}
                                                    ),
                                                    
     Overall_diab_code = patients.with_these_clinical_events(Overall_diab_codes,
-                                                   between = ["2017-01-01", "2022-01-01"],
+                                                   on_or_before = "2022-01-01",
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.2}
                                                    ),     

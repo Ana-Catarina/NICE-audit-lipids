@@ -60,6 +60,14 @@ study = StudyDefinition(
                                                          return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
         ),
         
+    cvdprevent_statins_prescribed = patients.with_these_medications(cvd_prevent_statin_codes,
+                                                         on_or_before = "2022-01-01",
+                                                         returning = "date",
+                                                         date_format = "YYYY-MM-DD",
+                                                         return_last_date_in_period = True,
+                                                         return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
+        ),
+        
     CKD_code = patients.with_these_clinical_events(CKD_codes,
                                                    on_or_before = "2022-01-01",
                                                    returning = "binary_flag",

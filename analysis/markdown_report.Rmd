@@ -32,6 +32,10 @@ df_input <- read_csv(here::here("output", "input.csv")) %>%
     "statin_cat" = case_when(
       is.na(statins_prescribed) ~ "No Statin Recorded",
       TRUE ~ "Statins Recorded"
+    ),
+    "cvd_statin_cat" = case_when(
+      is.na(cvdprevent_statins_prescribed) ~ "No Statin Recorded (CVDPREVENT)",
+      TRUE ~ "Statins Recorded (CVDPREVENT)"
     )
   )
   
@@ -41,8 +45,9 @@ summarise_df_by_group <- function(df, ...){
     group_by(...) %>% 
     summarise(n=n(),
               percentage = n / nrow(.)*100, .groups = "keep") %>% 
-    ungroup()
-}
+    ungroup() %>% 
+    adorn_totals()
+  }
 
 ```
 
@@ -134,7 +139,23 @@ df_input %>%
 
 
 ```
+## N total statin prescriptions
 
+```{r totalstatins}
+
+df_input %>% 
+  summarise_df_by_group(statin_cat)
+
+```
+
+## N total statin prescriptions (CVDPREVENT statin list)
+
+```{r totalstatinscvdp}
+
+df_input %>% 
+  summarise_df_by_group(cvd_statin_cat)
+
+```
 
 # Calculations
 

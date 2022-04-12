@@ -41,6 +41,12 @@
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/diab/6ca1e005/",
       "downloaded_at": "2022-02-14 17:41:34.443828Z",
       "sha": "e7065f7285300aa9e276fc8dc80a5290bb01a26e"
+    },
+    "opensafely-cvd_prevent_statins.csv": {
+      "id": "opensafely/cvd_prevent_statins/29797fb5",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/cvd_prevent_statins/29797fb5/",
+      "downloaded_at": "2022-04-12 17:07:38.851983Z",
+      "sha": "d89b746f3f7ca9bb598826ed644edf5dda20c89d"
     }
   }
 }

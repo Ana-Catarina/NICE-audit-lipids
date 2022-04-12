@@ -33,6 +33,7 @@ actions:
       variable_types:
           CVD_assess_latest_date: date
           statins_prescribed: date
+          cvdprevent_statins_prescribed: date
           age: int
           sex: categorical
           CVD_assess_latest_number: float

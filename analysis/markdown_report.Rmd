@@ -43,9 +43,9 @@ df_input <- read_csv(here::here("output", "input.csv")) %>%
 summarise_df_by_group <- function(df, ...){
   df %>% 
     group_by(...) %>% 
-    summarise(n=n(),
-              percentage = n / nrow(.)*100, .groups = "keep") %>% 
+    summarise(n=n()) %>% 
     ungroup() %>% 
+    mutate("percentage" = n/sum(n)*100) %>%
     adorn_totals()
   }
 
@@ -53,7 +53,7 @@ summarise_df_by_group <- function(df, ...){
 
 # Initial counts
 
-## Total N
+## Total N (aged 18-84 inclusive at end of 2021)
 
 ```{r}
 
@@ -61,7 +61,9 @@ nrow(df_input)
 
 ```
 
-## N with CVD diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+
+
+## N with CVD diagnosis 
 
 ```{r CVD_n}
 
@@ -71,7 +73,7 @@ df_input %>%
 
 ```
 
-## N with CKD diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+## N with CKD diagnosis 
 
 ```{r CKD_n}
 
@@ -81,7 +83,7 @@ df_input %>%
 
 ```
 
-## N with T1D diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+## N with T1D diagnosis
 
 ```{r T1D_n}
 
@@ -91,7 +93,7 @@ df_input %>%
 
 ```
 
-## N with T2D diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+## N with T2D diagnosis
 
 ```{r T2D_n}
 
@@ -101,42 +103,13 @@ df_input %>%
 
 ```
 
-## N with any DM diagnosis prior to 2022-01-01 (aged 18-84 at 2022-01-01)
+## N with any DM diagnosis
 
 ```{r anyDcode_n}
 
 df_input %>%
   filter(Overall_diab_code == 1) %>% 
   summarise_df_by_group(age_group)
-
-```
-
-## N excluding CVD, CKD, T1D (aged 40-84 at 2022-01-01)
-
-
-```{r noCVDCKDT1D}
-
-df_input %>% 
-  filter(age >= 40,
-         CVD_code == 0,
-         CKD_code == 0, 
-         T1D_code == 0) %>% 
-  nrow()
-
-```
-
-## N excluding CVD, CKD, T1D and risk assessment more than 5 years ago (aged 40-84 at 2022-01-01) [Indicator 1]
-
-```{r excluderiskassessmorethanfiveyears}
-
-df_input %>% 
-  filter(age >= 40,
-         CVD_code == 0,
-         CKD_code == 0, 
-         T1D_code == 0,
-         CVD_assess_latest_date >= "2017-01-01") %>% 
-  nrow()
-
 
 ```
 ## N total statin prescriptions
@@ -157,8 +130,6 @@ df_input %>%
 
 ```
 
-# Calculations
-
 ## Calculate % patients with CVD assessment at any time
 
 ```{r addCVDriskcat}
@@ -168,18 +139,61 @@ df_input %>%
          
 ```
 
-## Calculate % patients (by sex and age group) with CVD risk over 10 with statin prescription [Indicator 3]
+
+# Calculations
+
+## N excluding CVD, CKD, T1D (aged 40-84 at 2022-01-01)
+
+```{r noCVDCKDT1D}
+
+df_input %>% 
+  filter(age >= 40,
+         CVD_code == 0,
+         CKD_code == 0, 
+         T1D_code == 0) %>% 
+  nrow()
+
+```
+
+## N excluding CVD, CKD, T1D and risk assessment more than 5 years ago
+
+•	How many people aged 40-84y (excluding pre-existing CVD, T1DM and CKD) have had a CVD risk assessment recorded in the preceding 5 years?
+
+```{r excluderiskassessmorethanfiveyears}
+
+df_input %>% 
+  filter(age >= 40,
+         CVD_code == 0,
+         CKD_code == 0, 
+         T1D_code == 0,
+         CVD_assess_latest_date >= "2016-12-31") %>% 
+  nrow()
+
+```
+
+## Calculate % patients (by age group) with CVD risk over 10 with statin prescription
 
 ```{r CVDgreaterthan10statins}
 
 df_input %>% 
   filter(CVD_assess_latest_number >= 10) %>% 
-  summarise_df_by_group(sex, age_group, statin_cat) 
+  summarise_df_by_group(age_group, statin_cat) 
 
 
 ```
 
-## Calculate % patients (by sex and age group) with CVD risk over 20 with statin prescription [Indicator 4]
+## Calculate % patients (by age group) with CVD risk over 10 with statin prescription [Alternate CVDPreventStatinsList]
+
+```{r CVDgreaterthan10statinsalt}
+
+df_input %>% 
+  filter(CVD_assess_latest_number >= 10) %>% 
+  summarise_df_by_group(age_group, cvd_statin_cat) 
+
+
+```
+
+## Calculate % patients with CVD risk over 20 with statin prescription 
 
 ```{r CVDgreaterthan20statins}
 
@@ -189,44 +203,35 @@ df_input %>%
 
 ```
 
-## Calculate % patients (by sex and age group) with prior CVD diag (on or before 2022-01-01) and statin prescription (on or before 2022-01-01) [Indicator 5]
+## Calculate % patients with CVD risk over 20 with statin prescription [Alternate CVDPreventStatinsList]
+
+```{r CVDgreaterthan20statinsalt}
+
+df_input %>% 
+  filter(CVD_assess_latest_number >= 20) %>% 
+  summarise_df_by_group(sex, age_group, cvd_statin_cat) 
+
+```
+
+
+## Calculate % patients (age group) with prior CVD diag (on or before 2021-12-31) and statin prescription (on or before 2021-12-31)
 
 ```{r CVD }
 
 df_input %>% 
   filter(CVD_code == 1) %>% 
-  summarise_df_by_group(sex, age_group, statin_cat) 
+  summarise_df_by_group(age_group, statin_cat, cvd_statin_cat) 
 
 ```
 
-## Calculate % patients (total) with prior CVD diag (on or before 2022-01-01) and statin prescription (on or before 2022-01-01) [Indicator 5]
-
-```{r CVDtotal}
-
-df_input %>% 
-  filter(CVD_code == 1) %>% 
-  summarise_df_by_group(statin_cat) 
-
-```
-
-
-## Calculate % patients (by sex and age group) with prior CKD diag (on or before 2022-01-01) and statin prescription (on or before 2022-01-01) [Indicator 5]
+## Calculate % patients (age group) with prior CKD diag (on or before 2021-12-31) and statin prescription (on or before 2021-12-31)
 
 ```{r preexistCKDgtatins}
 
 df_input %>% 
   filter(CKD_code == 1) %>% 
-  summarise_df_by_group(sex, age_group, statin_cat) 
+  summarise_df_by_group(age_group, statin_cat, cvd_statin_cat) 
 
 
 ```
 
-
-## Calculate % patients (total) with prior CKD diag (on or before 2022-01-01) and statin prescription (on or before 2022-01-01) [Indicator 5]
-
-```{r preexistCKDstatinstotal}
-df_input %>% 
-  filter(CKD_code == 1) %>% 
-  summarise_df_by_group(statin_cat) 
-
-```

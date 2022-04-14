@@ -10,14 +10,6 @@ actions:
       highly_sensitive:
         cohort: output/input.csv
 
-  report_data:
-    run: r:latest analysis/report.R
-    needs:
-    - generate_study_population
-    outputs:
-      moderately_sensitive:
-        csv: output/report_*.csv
-        
   markdown_doc: 
     run:  r:latest -e 'rmarkdown::render("analysis/markdown_report.Rmd", output_dir = "output")'
     needs:  

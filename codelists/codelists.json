@@ -47,6 +47,12 @@
       "url": "https://codelists.opensafely.org/codelist/opensafely/cvd_prevent_statins/29797fb5/",
       "downloaded_at": "2022-04-12 17:07:38.851983Z",
       "sha": "d89b746f3f7ca9bb598826ed644edf5dda20c89d"
+    },
+    "user-rob_w-cvd_prevent_cvd_definition.csv": {
+      "id": "user/rob_w/cvd_prevent_cvd_definition/518ab0d9",
+      "url": "https://codelists.opensafely.org/codelist/user/rob_w/cvd_prevent_cvd_definition/518ab0d9/",
+      "downloaded_at": "2022-05-11 16:14:14.034545Z",
+      "sha": "e97cb902b19a7088fa60029f32f5a367334abe7e"
     }
   }
 }

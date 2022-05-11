@@ -15,3 +15,4 @@ Overall_diab_codes = codelist_from_csv("codelists/primis-covid19-vacc-uptake-dia
 statin_codes = codelist_from_csv("codelists/opensafely-statin-medication.csv", system = "snomed", column = "id")
 CVD_assess_codes = codelist_from_csv("codelists/opensafely-cvd-risk-assessment-score-qof.csv", system = "snomed", column = "code")
 cvd_prevent_statin_codes = codelist_from_csv("codelists/opensafely-cvd_prevent_statins.csv", system = "snomed", column = "code")
+cvd_prevent_cvd_definition = codelist_from_csv("codelists/user-rob_w-cvd_prevent_cvd_definition.csv", system = "snomed", column = "code")

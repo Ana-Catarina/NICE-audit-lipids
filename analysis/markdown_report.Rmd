@@ -26,17 +26,22 @@ df_input <- read_csv(here::here("output", "input.csv")) %>%
       TRUE ~ "No age"
     ),
     "CVD_assess_cat" = case_when(
-      is.na(CVD_assess_latest_number) ~ "No CVD Risk Assessment Noted",
-      TRUE ~ "CVD Risk Assessment"
+      CVD_assess_latest_number > 0 ~ "CVD Risk Assessment",
+      (is.na(CVD_assess_latest_number)|CVD_assess_latest_number == 0) ~ "No CVD Risk Assessment Noted",
+      TRUE ~ "Rule Failure"
     ),
     "statin_cat" = case_when(
-      is.na(statins_prescribed) ~ "No Statin Recorded",
+      is.na(statins_issued) ~ "No Statin Recorded",
       TRUE ~ "Statins Recorded"
     ),
     "cvd_statin_cat" = case_when(
-      is.na(cvdprevent_statins_prescribed) ~ "No Statin Recorded (CVDPREVENT)",
+      is.na(cvdprevent_statins_issued) ~ "No Statin Recorded (CVDPREVENT)",
       TRUE ~ "Statins Recorded (CVDPREVENT)"
-    )
+    ),
+    "cvd_statin_cat_last_6m" = case_when(
+      is.na(cvdprevent_statins_issued_last_6m) ~ "No statin Recorded in last 6m (CVDPREVENT)",
+      TRUE ~ "Statins Recorded in last 6m (CVDPREVENT)"
+    ),
   )
   
 
@@ -65,10 +70,12 @@ nrow(df_input)
 
 ## N with CVD diagnosis 
 
+* CVD codelist taken from CVDPrevent definitions, including stroke codes,  TIA codes, CHD codes, PAD codes and excluding HF and AAA codes
+
 ```{r CVD_n}
 
 df_input %>%
-  filter(CVD_code == 1) %>% 
+  filter(CVD_code_CVD_prevent == 1) %>% 
   summarise_df_by_group(age_group)
 
 ```
@@ -129,8 +136,39 @@ df_input %>%
   summarise_df_by_group(cvd_statin_cat)
 
 ```
+## N excluding CVD, CKD, T1D (aged 40-84 at 2022-01-01)
 
-## Calculate % patients with CVD assessment at any time
+```{r noCVDCKDT1D}
+
+df_input %>% 
+  filter(age >= 40,
+         CVD_code_CVD_prevent == 0,
+         CKD_code == 0, 
+         T1D_code == 0) %>% 
+  nrow()
+
+```
+## N excluding CVD, CKD, T1D and risk assessment more than 5 years ago [Indicator 1]
+
+•	How many people aged 40-84y (excluding pre-existing CVD, T1DM and CKD) have had a CVD risk assessment recorded in the preceding 5 years?
+
+```{r excluderiskassessmorethanfiveyears}
+
+df_input %>% 
+  filter(age >= 40,
+         CVD_code_CVD_prevent == 0,
+         CKD_code == 0, 
+         T1D_code == 0,
+         CVD_assess_latest_date >= "2016-12-31") %>% 
+  nrow()
+
+```
+
+
+
+# Calculations
+
+## Calculate % patients with CVD assessment at any time prior to 31st Dec 2021
 
 ```{r addCVDriskcat}
 
@@ -139,99 +177,48 @@ df_input %>%
          
 ```
 
+## Calculate % patients (by age group) with CVD risk over 10 with statin prescription in last 6 months
 
-# Calculations
-
-## N excluding CVD, CKD, T1D (aged 40-84 at 2022-01-01)
-
-```{r noCVDCKDT1D}
-
-df_input %>% 
-  filter(age >= 40,
-         CVD_code == 0,
-         CKD_code == 0, 
-         T1D_code == 0) %>% 
-  nrow()
-
-```
-
-## N excluding CVD, CKD, T1D and risk assessment more than 5 years ago
-
-•	How many people aged 40-84y (excluding pre-existing CVD, T1DM and CKD) have had a CVD risk assessment recorded in the preceding 5 years?
-
-```{r excluderiskassessmorethanfiveyears}
-
-df_input %>% 
-  filter(age >= 40,
-         CVD_code == 0,
-         CKD_code == 0, 
-         T1D_code == 0,
-         CVD_assess_latest_date >= "2016-12-31") %>% 
-  nrow()
-
-```
-
-## Calculate % patients (by age group) with CVD risk over 10 with statin prescription
+3.	How many people with a recorded CVD risk assessment score of ≥ 10% are currently treated with a lipid modifying therapy. 
 
 ```{r CVDgreaterthan10statins}
 
 df_input %>% 
-  filter(CVD_assess_latest_number >= 10) %>% 
-  summarise_df_by_group(age_group, statin_cat) 
+  filter(CVD_assess_latest_number >= 0.1,
+         CVD_code_CVD_prevent == 0,
+         CKD_code == 0, 
+         ) %>% 
+  summarise_df_by_group(age_group, cvd_statin_cat_last_6m) 
 
 
 ```
+## Calculate % patients with CVD risk over 20 with statin prescription
 
-## Calculate % patients (by age group) with CVD risk over 10 with statin prescription [Alternate CVDPreventStatinsList]
-
-```{r CVDgreaterthan10statinsalt}
-
-df_input %>% 
-  filter(CVD_assess_latest_number >= 10) %>% 
-  summarise_df_by_group(age_group, cvd_statin_cat) 
-
-
-```
-
-## Calculate % patients with CVD risk over 20 with statin prescription 
-
-```{r CVDgreaterthan20statins}
-
-df_input %>% 
-  filter(CVD_assess_latest_number >= 20) %>% 
-  summarise_df_by_group(sex, age_group, statin_cat) 
-
-```
-
-## Calculate % patients with CVD risk over 20 with statin prescription [Alternate CVDPreventStatinsList]
+4.	How many people with a recorded CVD risk assessment score of ≥ 20% are currently treated with a lipid modifying therapy. 
 
 ```{r CVDgreaterthan20statinsalt}
 
 df_input %>% 
-  filter(CVD_assess_latest_number >= 20) %>% 
-  summarise_df_by_group(sex, age_group, cvd_statin_cat) 
+  filter(CVD_assess_latest_number >= 0.2,
+         CVD_code_CVD_prevent == 0,
+         CKD_code == 0) %>% 
+  summarise_df_by_group(age_group, cvd_statin_cat_last_6m) 
 
 ```
 
+## Calculate % patients with prexisting CVD/CKD currently treated with lipid modifying therapy.
 
-## Calculate % patients (age group) with prior CVD diag (on or before 2021-12-31) and statin prescription (on or before 2021-12-31)
-
-```{r CVD }
+```{r CVDCKDstatins}
 
 df_input %>% 
-  filter(CVD_code == 1) %>% 
-  summarise_df_by_group(age_group, statin_cat, cvd_statin_cat) 
+  filter(
+         CVD_code_CVD_prevent == 1,
+         CKD_code == 1
+         ) %>% 
+  summarise_df_by_group(age_group, cvd_statin_cat_last_6m) 
 
 ```
 
-## Calculate % patients (age group) with prior CKD diag (on or before 2021-12-31) and statin prescription (on or before 2021-12-31)
-
-```{r preexistCKDgtatins}
-
-df_input %>% 
-  filter(CKD_code == 1) %>% 
-  summarise_df_by_group(age_group, statin_cat, cvd_statin_cat) 
 
 
-```
 

@@ -55,7 +55,7 @@ study = StudyDefinition(
                                                     return_expectations = {"category": {"ratios": {">": 0.1, "<": 0.2, "~": 0.7}}, "incidence" : 0.1}
                                                     ),
     
-    statins_prescribed = patients.with_these_medications(statin_codes,
+    statins_issued = patients.with_these_medications(statin_codes,
                                                          on_or_before = "last_day_of_year(index_date)",
                                                          returning = "date",
                                                          date_format = "YYYY-MM-DD",
@@ -63,8 +63,17 @@ study = StudyDefinition(
                                                          return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
         ),
         
-    cvdprevent_statins_prescribed = patients.with_these_medications(cvd_prevent_statin_codes,
+    cvdprevent_statins_issued = patients.with_these_medications(cvd_prevent_statin_codes,
                                                          on_or_before = "last_day_of_year(index_date)",
+                                                         returning = "date",
+                                                         date_format = "YYYY-MM-DD",
+                                                         return_last_date_in_period = True,
+                                                         return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
+        ),
+        
+    cvdprevent_statins_issued_last_6m = patients.with_these_medications(cvd_prevent_statin_codes,
+                                                         between = ["2021-07-01",
+                                                                    "last_day_of_year(index_date)"],
                                                          returning = "date",
                                                          date_format = "YYYY-MM-DD",
                                                          return_last_date_in_period = True,
@@ -78,6 +87,12 @@ study = StudyDefinition(
                                                    ),
     
     CVD_code = patients.with_these_clinical_events(CVD_codes,
+                                                   on_or_before = "last_day_of_year(index_date)",
+                                                   returning = "binary_flag",
+                                                   return_expectations = {"incidence": 0.2}
+                                                   ),
+                                                   
+    CVD_code_CVD_prevent = patients.with_these_clinical_events(cvd_prevent_cvd_definition,
                                                    on_or_before = "last_day_of_year(index_date)",
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.2}

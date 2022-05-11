@@ -1,0 +1,448 @@
+code,term
+10273003,Acute infarction of papillary muscle
+103011000119106,Coronary arteriosclerosis in patient with history of previous myocardial infarction
+1077002,Septal infarction by electrocardiogram
+1078001000000105,Haemorrhagic stroke
+1089411000000104,Cerebral infarction due to occlusion of cerebral artery
+1089421000000105,Cerebral infarction due to stenosis of cerebral artery
+1089431000000107,Postoperative nontransmural myocardial infarction
+1089441000000103,Postoperative transmural myocardial infarction
+1089451000000100,Acute nontransmural myocardial infarction
+1089471000000109,Acute transmural myocardial infarction
+10971000087107,Myocardial ischemia during surgery
+11018701000119109,Coronary arteriosclerosis after percutaneous coronary angioplasty
+111297002,Nonparalytic stroke
+116288000,Paralytic stroke
+117051000119103,Chronic total occlusion of coronary artery
+12236991000119103,Pain at rest of bilateral lower limbs co-occurrent and due to atherosclerosis
+12237111000119107,Pain at rest of left lower limb co-occurrent and due to atherosclerosis
+12237231000119107,Pain at rest of right lower limb co-occurrent and due to atherosclerosis
+12238111000119106,Acute ST segment elevation myocardial infarction of inferolateral wall
+12238151000119107,Acute ST segment elevation myocardial infarction of inferoposterior wall
+123641001,Left coronary artery occlusion
+123642008,Right coronary artery occlusion
+125081000119106,Cerebral infarction due to occlusion of precerebral artery
+127014009,Peripheral angiopathy due to diabetes mellitus
+129574000,Postoperative myocardial infarction
+130541000119100,History of placement of stent in coronary artery bypass graft
+139011000119104,Coronary arteriosclerosis following coronary artery bypass graft
+140921000119102,Ischemic stroke without coma
+14309005,Anterior choroidal artery syndrome
+15258001,Subclavian steal syndrome
+15649901000119104,Gangrene of right lower limb due to atherosclerosis
+15649941000119102,Gangrene of bilateral lower limbs co-occurrent and due to atherosclerosis
+15649991000119105,Gangrene of left lower limb due to atherosclerosis
+15712841000119100,Acute ST segment elevation myocardial infarction of posterolateral wall
+15712881000119105,Acute ST segment elevation myocardial infarction of anterolateral wall
+15712921000119103,Acute ST segment elevation myocardial infarction of lateral wall
+15712961000119108,Acute ST segment elevation myocardial infarction of anteroseptal wall
+15713041000119103,Acute ST segment elevation myocardial infarction of posterior wall
+15713081000119108,Acute ST segment elevation myocardial infarction due to left coronary artery occlusion
+15713121000119105,Acute ST segment elevation myocardial infarction due to right coronary artery occlusion
+15713161000119100,Acute ST segment elevation myocardial infarction of septum
+15713201000119105,Acute ST segment elevation myocardial infarction of posterobasal wall
+15960061000119102,Unstable angina co-occurrent and due to coronary arteriosclerosis
+15960141000119102,Angina co-occurrent and due to coronary arteriosclerosis
+15960381000119109,Angina co-occurrent and due to arteriosclerosis of coronary artery bypass graft
+15960541000119107,Unstable angina due to arteriosclerosis of autologous vein coronary artery bypass graft
+15960581000119102,Angina co-occurrent and due to arteriosclerosis of autologous vein coronary artery bypass graft
+15960661000119107,Unstable angina co-occurrent and due to arteriosclerosis of coronary artery bypass graft
+15960981000119105,Mural thrombus of left ventricle following acute myocardial infarction
+15978431000119106,Thrombosis of right vertebral artery
+15990001,Acute myocardial infarction of posterolateral wall
+16000351000119109,Cerebrovascular accident due to occlusion of left posterior cerebral artery
+16000391000119104,Cerebrovascular accident due to occlusion of right posterior cerebral artery
+16000431000119109,Cerebrovascular accident due to occlusion of right middle cerebral artery
+16000511000119103,Cerebrovascular accident due to occlusion of left middle cerebral artery
+16002031000119102,Cerebrovascular accident due to thrombus of right middle cerebral artery
+16002111000119106,Cerebrovascular accident due to thrombus of left middle cerebral artery
+161502000,History of myocardial infarct at age less than sixty
+161503005,History of myocardial infarct at age greater than sixty
+16218291000119100,Acute cerebral ischemia
+16371781000119100,Cerebellar stroke
+1641000119107,Coronary arteriosclerosis in native artery
+16644681000119102,Cerebrovascular accident due to occlusion of bilateral pontine arteries
+16661931000119102,Cerebrovascular accident due to stenosis of bilateral vertebral arteries
+16661971000119104,Cerebrovascular accident due to stenosis of bilateral carotid arteries
+16837681000119104,Myocardial infarction due to demand ischemia
+16891151000119103,Coronary artery disease due to type 2 diabetes mellitus
+16896851000119101,History of embolic cerebrovascular accident
+16896891000119106,History of cerebrovascular accident due to ischemia
+17531000119105,Acute myocardial infarction due to left coronary artery occlusion
+1755008,Old myocardial infarction
+19057007,Status anginosus
+194802003,True posterior myocardial infarction
+194809007,Acute atrial infarction
+194821006,Coronary thrombosis not resulting in myocardial infarction
+194823009,Acute coronary insufficiency
+194828000,Angina
+194842008,Single coronary vessel disease
+194843003,Double coronary vessel disease
+194849004,Generalized ischemic myocardial dysfunction
+194856005,Subsequent myocardial infarction
+194857001,Subsequent myocardial infarction of anterior wall
+194858006,Subsequent myocardial infarction of inferior wall
+194861007,Certain current complications following acute myocardial infarction
+194862000,Hemopericardium due to and following acute myocardial infarction
+194863005,Atrial septal defect due to and following acute myocardial infarction
+194865003,Rupture of cardiac wall without hemopericardium as current complication following acute myocardial infarction
+194866002,Rupture of chordae tendinae due to and following acute myocardial infarction
+194867006,Rupture of papillary muscle as current complication following acute myocardial infarction
+194868001,"Thrombosis of atrium, auricular appendage, and ventricle due to and following acute myocardial infarction"
+195165005,Basal ganglia hemorrhage
+195167002,External capsule hemorrhage
+195168007,Intracerebral hemorrhage with intraventricular hemorrhage
+195169004,"Intracerebral hemorrhage, multiple localized"
+195185009,Cerebral infarct due to thrombosis of precerebral arteries
+195186005,Cerebral infarction due to embolism of precerebral arteries
+195189003,Cerebral infarction due to thrombosis of cerebral arteries
+195190007,Cerebral infarction due to embolism of cerebral arteries
+195199008,Vertebrobasilar artery syndrome
+195200006,Carotid artery syndrome hemispheric
+195201005,Multiple and bilateral precerebral artery syndromes
+195205001,Impending cerebral ischemia
+195206000,Intermittent cerebral ischemia
+195209007,Middle cerebral artery syndrome
+195210002,Anterior cerebral artery syndrome
+195211003,Posterior cerebral artery syndrome
+195212005,Brainstem stroke syndrome
+195213000,Cerebellar stroke syndrome
+195216008,Left sided cerebral hemisphere cerebrovascular accident
+195217004,Right sided cerebral hemisphere cerebrovascular accident
+195230003,"Cerebral infarction due to cerebral venous thrombosis, non-pyogenic"
+20059004,Occlusion of cerebral artery
+20908003,Subcortical cerebral hemorrhage
+21470009,Syncope anginosa
+22298006,Myocardial infarction
+225566008,Ischemic chest pain
+230690007,Cerebrovascular accident
+230691006,Cerebrovascular accident due to occlusion of cerebral artery
+230692004,Infarction - precerebral
+230693009,Anterior cerebral circulation infarction
+230694003,Total anterior cerebral circulation infarction
+230695002,Partial anterior cerebral circulation infarction
+230696001,Posterior cerebral circulation infarction
+230698000,Lacunar infarction
+230699008,Pure motor lacunar infarction
+230700009,Pure sensory lacunar infarction
+230701008,Pure sensorimotor lacunar infarction
+230702001,Lacunar ataxic hemiparesis
+230703006,Dysarthria-clumsy hand syndrome
+230704000,Multi-infarct state
+230706003,Hemorrhagic cerebral infarction
+230707007,Anterior cerebral circulation hemorrhagic infarction
+230708002,Posterior cerebral circulation hemorrhagic infarction
+230709005,Massive supratentorial cerebral hemorrhage
+230710000,Lobar cerebral hemorrhage
+230711001,Thalamic hemorrhage
+230712008,Lacunar hemorrhage
+230713003,Stroke of uncertain pathology
+230714009,Anterior circulation stroke of uncertain pathology
+230715005,Posterior circulation stroke of uncertain pathology
+230716006,Carotid territory transient ischemic attack
+230717002,Vertebrobasilar territory transient ischemic attack
+23311000119105,Acute myocardial infarction due to right coronary artery occlusion
+233817007,Triple vessel disease of the heart
+233819005,Stable angina
+233821000,New onset angina
+233823002,Silent myocardial ischemia
+233825009,Acute Q wave infarction - anteroseptal
+233826005,Acute non-Q wave infarction - anteroseptal
+233827001,Acute Q wave infarction - anterolateral
+233828006,Acute non-Q wave infarction - anterolateral
+233829003,Acute Q wave infarction - inferior
+233830008,Acute non-Q wave infarction - inferior
+233831007,Acute Q wave infarction - inferolateral
+233832000,Acute non-Q wave infarction - inferolateral
+233833005,Acute Q wave infarction - lateral
+233834004,Acute non-Q wave infarction - lateral
+233835003,Acute widespread myocardial infarction
+233836002,Acute Q wave infarction - widespread
+233837006,Acute non-Q wave infarction - widespread
+233838001,Acute posterior myocardial infarction
+233839009,Old anterior myocardial infarction
+233840006,Old inferior myocardial infarction
+233841005,Old lateral myocardial infarction
+233842003,Old posterior myocardial infarction
+233843008,Silent myocardial infarction
+233844002,Accelerated coronary artery disease in transplanted heart
+233846000,Post-infarction ventricular septal defect
+233847009,Cardiac rupture due to and following acute myocardial infarction
+233885007,Post-infarction pericarditis
+233958001,Peripheral ischemia
+233961000,Lower limb ischemia
+233962007,Critical lower limb ischemia
+233970002,Coronary artery stenosis
+24654003,Weber-Gubler syndrome
+251024009,Coronary graft stenosis
+25106000,Impending infarction
+25133001,Completed stroke
+266257000,Transient ischemic attack
+274100004,Cerebral hemorrhage
+275434003,Stroke in the puerperium
+275520000,Claudication
+276219001,Occipital cerebral infarction
+276220007,Foville syndrome
+276221006,Millard-Gubler syndrome
+276222004,Top of basilar syndrome
+276722003,Intracerebellar and posterior fossa hemorrhage
+281091000,Ischemic myocardial dysfunction
+281092007,Stunned myocardium
+281093002,Hibernating myocardium
+281240008,Extension of cerebrovascular accident
+282006,Acute myocardial infarction of basal-lateral wall
+285141000119106,Arteriosclerosis of autologous arterial coronary artery bypass graft
+285151000119108,Arteriosclerosis of autologous coronary artery bypass graft
+285721000119104,History of acute ST segment elevation myocardial infarction
+285951000119105,Mechanical breakdown of coronary artery bypass graft
+285981000119103,Acute ST segment elevation myocardial infarction involving left anterior descending coronary artery
+285991000119100,Acute ST segment elevation myocardial infarction involving left main coronary artery
+291511000119103,Spontaneous hemorrhage of deep cerebral hemisphere
+291521000119105,Spontaneous hemorrhage of cortical intracerebral hemisphere
+291531000119108,Spontaneous hemorrhage of cerebral hemisphere
+291541000119104,Spontaneous hemorrhage of brain stem
+292851000119109,Lacunar ataxic hemiparesis of right dominant side
+292861000119106,Lacunar ataxic hemiparesis of left dominant side
+297138001,Embolus of circle of Willis
+300917007,Ischemia of feet
+300995000,Exercise-induced angina
+301755001,Ischemic foot
+30277009,Rupture of ventricle due to acute myocardial infarction
+304914007,Acute Q wave myocardial infarction
+307140009,Acute non-Q wave infarction
+307363008,Multiple lacunar infarcts
+307406004,Trash foot
+307408003,Ischemic toe
+307766002,Left sided cerebral infarction
+307767006,Right sided cerebral infarction
+308065005,History of myocardial infarction in last year
+308128006,"Right sided intracerebral hemorrhage, unspecified"
+311792005,Postoperative transmural myocardial infarction of anterior wall
+311793000,Postoperative transmural myocardial infarction of inferior wall
+311796008,Postoperative subendocardial myocardial infarction
+31211000119101,Peripheral angiopathy due to type 1 diabetes mellitus
+312822006,Critical ischemia of foot
+314116003,Post infarct angina
+314207007,Non-Q wave myocardial infarction
+314902007,Peripheral angiopathy due to type 2 diabetes mellitus
+315025001,Refractory angina
+315026000,Transient myocardial ischemia
+315287002,Diabetes mellitus insulin-glucose infusion in acute myocardial infarction
+315348000,Asymptomatic coronary heart disease
+32574007,"Past myocardial infarction diagnosed on electrocardiogram AND/OR other special investigation, but currently presenting no symptoms"
+329361000119107,Cerebrovascular accident due to occlusion of right middle cerebral artery by embolus
+329371000119101,Cerebrovascular accident due to occlusion of left middle cerebral artery by embolus
+329421000119107,Cerebrovascular accident due to occlusion of right posterior cerebral artery by embolus
+329431000119105,Cerebrovascular accident due to occlusion of left posterior cerebral artery by embolus
+329461000119102,Cerebrovascular accident due to occlusion of left cerebellar artery by embolus
+329481000119106,Occlusion of right middle cerebral artery
+329491000119109,Occlusion of left middle cerebral artery
+329561000119101,Occlusion of right posterior cerebral artery
+329571000119107,Occlusion of left posterior cerebral artery
+329641000119104,Cerebrovascular accident due to thrombus of basilar artery
+329651000119102,Cerebrovascular accident due to thrombus of right carotid artery
+330411000119109,Lacunar ataxic hemiparesis of left nondominant side
+330421000119102,Lacunar ataxic hemiparesis of right nondominant side
+330791000119108,Cerebrovascular accident due to thrombus of left carotid artery
+33301000119105,Sequela of cardioembolic stroke
+34781003,Vertebral artery syndrome
+34881000119105,Peripheral vascular disease associated with another disorder
+35928006,Nocturnal angina
+371040005,Thrombotic stroke
+371041009,Embolic stroke
+371068009,Myocardial infarction with complication
+371803003,Multi vessel coronary artery disease
+371804009,Left main coronary artery disease
+371805005,Significant coronary bypass graft disease
+371806006,Progressive angina
+371807002,Atypical angina
+371808007,Recurrent angina status post percutaneous transluminal coronary angioplasty
+371809004,Recurrent angina status post coronary stent placement
+371810009,Recurrent angina status post coronary artery bypass graft
+371811008,Recurrent angina status post rotational atherectomy
+371812001,Recurrent angina status post directional coronary atherectomy
+373606000,Occlusive stroke
+394659003,Acute coronary syndrome
+394710008,First myocardial infarction
+398274000,Coronary artery thrombosis
+399211009,History of myocardial infarction
+399261000,History of coronary artery bypass grafting
+399957001,Peripheral arterial occlusive disease
+400047006,Peripheral vascular disease
+401303003,Acute ST segment elevation myocardial infarction
+401314000,Acute non-ST segment elevation myocardial infarction
+408546009,Coronary artery bypass graft occlusion
+413102000,Infarction of basal ganglia
+41334000,"Angina, class II"
+413439005,Acute ischemic heart disease
+413444003,Acute myocardial ischemia
+413758000,Cardioembolic stroke
+413838009,Chronic ischemic heart disease
+413844008,Chronic myocardial ischemia
+414024009,Disorder of coronary artery
+414545008,Ischemic heart disease
+414795007,Myocardial ischemia
+418044006,Myocardial infarction in recovery phase
+420006002,Obliterative coronary artery disease
+42531007,Microinfarct of heart
+426107000,Acute lacunar infarction
+426814001,Transient cerebral ischemia due to atrial fibrillation
+426856002,Ischemic congestive cardiomyopathy
+426983002,Infarction of medulla oblongata
+427919004,Coronary arteriosclerosis caused by radiation
+428196007,Mixed myocardial ischemia and infarction
+42866003,Congenital coronary artery sclerosis
+428752002,Recent myocardial infarction
+429245005,Recurrent coronary arteriosclerosis after percutaneous transluminal coronary angioplasty
+429391004,New myocardial infarction compared to prior study
+429559004,Typical angina
+429673002,Arteriosclerosis of coronary artery bypass graft
+432504007,Cerebral infarction
+442224005,Arteriosclerosis of autologous vein coronary artery bypass graft
+442240008,Arteriosclerosis of nonautologous coronary artery bypass graft
+442421004,Arteriosclerosis of arterial coronary artery bypass graft
+443502000,Atherosclerosis of coronary artery
+444172003,Recurrent transient cerebral ischemic attack
+444657001,Superior cerebellar artery syndrome
+444855007,Arteriosclerosis of coronary artery bypass graft of transplanted heart
+444856008,Arteriosclerosis of internal mammary artery coronary artery bypass graft
+4557003,Preinfarction syndrome
+461000119108,History of myocardial infarction in last eight weeks
+46109009,Subendocardial ischemia
+472100003,Ischemic dilated cardiomyopathy due to coronary artery disease
+49422009,Cortical hemorrhage
+52035003,Acute anteroapical myocardial infarction
+52201006,Internal capsule hemorrhage
+53741008,Coronary arteriosclerosis
+54329005,Acute myocardial infarction of anterior wall
+56267009,Multi-infarct dementia
+57054005,Acute myocardial infarction
+57981008,Progressing stroke
+58612006,Acute myocardial infarction of lateral wall
+59021001,Angina decubitus
+59063002,Acute myocardial infarction of apical-lateral wall
+61236006,Aortocoronary artery bypass graft repeated
+61490001,"Angina, class I"
+62695002,Acute anteroseptal myocardial infarction
+63491006,Intermittent claudication
+63739005,Coronary occlusion
+64009001,Basilar artery syndrome
+64627002,Acute myocardial infarction of high lateral wall
+65547006,Acute myocardial infarction of inferolateral wall
+66189004,Postmyocardial infarction syndrome
+67682002,Coronary artery atheroma
+697976003,Microvascular ischemia of myocardium
+698377004,Coronary angioplasty planned
+698378009,Coronary artery bypass graft operation planned
+698593009,History of non-ST segment elevation myocardial infarction
+70211005,Acute myocardial infarction of anterolateral wall
+703164000,Acute ST segment elevation myocardial infarction of anterior wall
+703165004,Acute ST segment elevation myocardial infarction of anterior wall involving right ventricle
+703209002,Subsequent ST segment elevation myocardial infarction of inferior wall
+703210007,Subsequent ST segment elevation myocardial infarction of anterior wall
+703211006,Subsequent ST segment elevation myocardial infarction
+703212004,Acute myocardial infarction during procedure
+703213009,Acute ST segment elevation myocardial infarction of inferior wall
+703214003,Silent coronary vasospastic disease
+703251009,Acute myocardial infarction of inferior wall involving right ventricle
+703252002,Acute myocardial infarction of anterior wall involving right ventricle
+703253007,Acute ST segment elevation myocardial infarction of inferior wall involving right ventricle
+703326006,Mitral valve regurgitation due to and following acute myocardial infarction
+703328007,Mitral valve regurgitation due to acute myocardial infarction without papillary muscle and chordal rupture
+703330009,Mitral valve regurgitation due to acute myocardial infarction with papillary muscle and chordal rupture
+703360004,Subsequent non-ST segment elevation myocardial infarction
+70422006,Acute subendocardial infarction
+70998009,Acute myocardial infarction of basal inferior segment of left ventricle
+71023004,Pericarditis due to acute myocardial infarction
+712866001,Resting ischemia co-occurrent and due to ischemic heart disease
+713405002,Subacute ischemic heart disease
+71444005,Cerebral arterial thrombosis
+719678003,Non-obstructive atherosclerosis of coronary artery
+723082006,Silent cerebral infarct
+723858002,Ventricular aneurysm due to and following acute myocardial infarction
+723859005,Pulmonary embolism due to and following acute myocardial infarction
+723860000,Arrhythmia due to and following acute myocardial infarction
+723861001,Cardiogenic shock unrelated to mechanical complications as current complication following acute myocardial infarction
+723862008,Atherosclerosis of non-autologous coronary artery bypass graft
+723870003,Acute occlusion of artery of lower limb co-occurrent and due to thromboembolus
+724424009,Cerebral ischemic stroke due to small artery occlusion
+724429004,Stroke co-occurrent with migraine
+724431008,Atherosclerosis of autologous coronary artery bypass graft
+732923001,Hemorrhage of medulla oblongata
+734383005,Thrombosis of left middle cerebral artery
+734384004,Thrombosis of right middle cerebral artery
+734961002,Embolus of left posterior cerebral artery
+734963004,Embolus of right posterior cerebral artery
+734964005,Embolus of left middle cerebral artery
+734965006,Embolus of right middle cerebral artery
+736978009,Mural thrombus of right ventricle following acute myocardial infarction
+73795002,Acute myocardial infarction of inferior wall
+75038005,Cerebellar hemorrhage
+751371000000107,Personal history of transient ischaemic attack
+75543006,Cerebral embolism
+762629007,Occlusion of right middle cerebral artery by embolus
+762630002,Occlusion of left middle cerebral artery by embolus
+762651004,Occlusion of right posterior cerebral artery by embolus
+762652006,Occlusion of left posterior cerebral artery by embolus
+76593002,Acute myocardial infarction of inferoposterior wall
+7713009,Intrapontine hemorrhage
+78569004,Posterior inferior cerebellar artery syndrome
+78741000119103,Acute coronary artery occlusion not resulting in myocardial infarction
+788455001,Occlusion of bilateral pontine arteries
+788880006,Cerebral ischemic stroke due to dissection of artery
+788881005,Cerebral ischemic stroke due to aortic arch embolism
+788882003,Cerebral ischemic stroke due to global hypoperfusion with watershed infarct
+788883008,Cerebral ischemic stroke due to hypercoagulable state
+788884002,Cerebral ischemic stroke due to subarachnoid hemorrhage
+79009004,Acute myocardial infarction of septum
+791000119109,Angina due to type 2 diabetes mellitus
+792842004,Coronary arteriosclerosis in artery of transplanted heart
+792844003,Limb pain at rest due to atherosclerosis of artery of lower limb
+792846001,Ulcer of heel due to atherosclerosis of artery of lower limb
+792850008,Ulcer of ankle due to atherosclerosis of artery of lower limb
+792855003,Ulcer of calf due to atherosclerosis of artery of lower limb
+810681000000101,Coronary microvascular disease
+82522008,Ischemic contracture of left ventricle syndrome
+827163002,Early postmyocardial infarction pericarditis
+827164008,Delayed postmyocardial infarction pericarditis
+836293000,Acute myocardial infarction of right ventricle
+836294006,Acute myocardial infarction of apex of heart
+836295007,Acute myocardial infarction of inferolateral wall with posterior extension
+836711000000108,Ischaemic lower limb pain at rest
+840309000,Acute ST segment elevation myocardial infarction due to occlusion of proximal portion of anterior descending branch of left coronary artery
+840310005,Occlusion of proximal portion of anterior descending branch of left coronary artery
+840312002,Acute ST segment elevation myocardial infarction due to occlusion of mid portion of anterior descending branch of left coronary artery
+840313007,Occlusion of mid portion of anterior descending branch of left coronary artery
+840315000,Occlusion of distal portion of anterior descending branch of left coronary artery
+840316004,Acute ST segment elevation myocardial infarction due to occlusion of distal portion of anterior descending branch of left coronary artery
+840580004,Peripheral arterial disease
+840608004,Occlusion of anterior descending branch of left coronary artery
+840609007,Acute ST segment elevation myocardial infarction due to occlusion of anterior descending branch of left coronary artery
+840679006,Occlusion of septal branch of anterior descending branch of left coronary artery
+840680009,Acute ST segment elevation myocardial infarction due to occlusion of septal branch of anterior descending branch of left coronary artery
+846667001,Occlusion of diagonal branch of anterior descending branch of left coronary artery
+846668006,Acute ST segment elevation myocardial infarction due to occlusion of diagonal branch of anterior descending branch of left coronary artery
+846683001,Acute ST segment elevation myocardial infarction due to occlusion of intermediate artery
+846684007,Occlusion of intermediate artery
+85284003,"Angina, class III"
+868214006,Acute ST segment elevation myocardial infarction due to occlusion of proximal portion of right coronary artery
+868215007,Occlusion of proximal portion of right coronary artery
+868216008,Occlusion of distal portion of right coronary artery
+868217004,Acute ST segment elevation myocardial infarction due to occlusion of distal portion of right coronary artery
+868219001,Occlusion of mid portion of right coronary artery
+868220007,Acute ST segment elevation myocardial infarction due to occlusion of mid portion of right coronary artery
+868221006,Occlusion of marginal branch of right coronary artery
+868222004,Occlusion of posterior descending branch of right coronary artery
+868223009,Occlusion of posterior lateral branch of right coronary artery
+868224003,Acute ST segment elevation myocardial infarction due to occlusion of marginal branch of right coronary artery
+868225002,Acute ST segment elevation myocardial infarction due to occlusion of posterior descending branch of right coronary artery
+868226001,Acute ST segment elevation myocardial infarction due to occlusion of posterior lateral branch of right coronary artery
+870544005,Occlusion of distal basilar artery
+870579007,Occlusion of branch of basilar artery
+87555007,Claude's syndrome
+89323001,"Angina, class IV"
+90099008,Subcortical leukoencephalopathy
+92517006,Calcific coronary arteriosclerosis
+95454007,Brain stem hemorrhage
+95457000,Brain stem infarction
+95460007,Cerebellar infarction

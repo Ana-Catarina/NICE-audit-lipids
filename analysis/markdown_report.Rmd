@@ -195,7 +195,7 @@ df_input %>%
 
 ```
 
-```{r CVDgreaterthan10statins}
+```{r CVDgreaterthan10statinsage}
 
 df_input %>% 
   filter(CVD_assess_latest_number >= 10,
@@ -220,7 +220,7 @@ df_input %>%
 
 ```
 
-```{r CVDgreaterthan20statinsalt}
+```{r CVDgreaterthan20statinsaltage}
 
 df_input %>% 
   filter(CVD_assess_latest_number >= 20,

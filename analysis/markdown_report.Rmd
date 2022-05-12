@@ -35,12 +35,12 @@ df_input <- read_csv(here::here("output", "input.csv")) %>%
       TRUE ~ "Statins Recorded"
     ),
     "cvd_statin_cat" = case_when(
-      is.na(cvdprevent_statins_issued) ~ "No Statin Recorded (CVDPREVENT)",
-      TRUE ~ "Statins Recorded (CVDPREVENT)"
+      is.na(cvdprevent_statins_issued) ~ "No Statin Recorded (CVDPREVENT codelist)",
+      TRUE ~ "Statins recorded (CVDPREVENT codelist)"
     ),
     "cvd_statin_cat_last_6m" = case_when(
-      is.na(cvdprevent_statins_issued_last_6m) ~ "No statin Recorded in last 6m (CVDPREVENT)",
-      TRUE ~ "Statins Recorded in last 6m (CVDPREVENT)"
+      is.na(cvdprevent_statins_issued_last_6m) ~ "No statin Recorded in last 6m (CVDPREVENT codelist)",
+      TRUE ~ "StatinsrRecorded in last 6m (CVDPREVENT codelist)"
     ),
   )
   
@@ -163,18 +163,6 @@ df_input %>%
   nrow()
 
 ```
-## Histograms of CVD risk assesment values
-
-```{r cvdriskhistogram}
-
-options(scipen = 999)
-
-df_input %>% 
-  filter(between(CVD_assess_latest_number, 1, 100)) %>% 
-  ggplot(aes(x = CVD_assess_latest_number)) + 
-  geom_histogram()
-
-```
 ## N with no cvd_assess_number
 
 ```{r nocvdassess}
@@ -230,7 +218,6 @@ df_input %>%
 
 df_input %>% 
   filter(CVD_assess_latest_number >= 20,
-         CVD_assess_latest_date >= "2016-12-31",
          CVD_code_CVD_prevent == 0,
          CKD_code == 0) %>% 
   summarise_df_by_group(cvd_statin_cat_last_6m) 
@@ -241,7 +228,6 @@ df_input %>%
 
 df_input %>% 
   filter(CVD_assess_latest_number >= 20,
-         CVD_assess_latest_date >= "2016-12-31",
          CVD_code_CVD_prevent == 0,
          CKD_code == 0) %>% 
   summarise_df_by_group(cvd_statin_cat_last_6m, age_group) 

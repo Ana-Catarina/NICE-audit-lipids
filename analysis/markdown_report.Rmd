@@ -163,7 +163,16 @@ df_input %>%
   nrow()
 
 ```
+## Hist of CVD risk assesment values
 
+```{r cvdriskhistogram}
+
+df_input %>% 
+  ggplot(aes(x = CVD_assess_latest_number)) + 
+  geom_histogram()
+
+
+```
 
 
 # Calculations

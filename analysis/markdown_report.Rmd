@@ -190,7 +190,7 @@ nrow(df_input %>% filter(CVD_assess_latest_number == 0))
 
 ## N with cvd_assess_number missing
 
-```{r nocvdassess}
+```{r nocvdassessna}
 
 nrow(df_input %>% filter(is.na(CVD_assess_latest_number)))
 

@@ -39,7 +39,7 @@ study = StudyDefinition(
         on_or_before = "last_day_of_year(index_date)",
         returning = "numeric_value",
         find_last_match_in_period = True,
-        return_expectations = {"float": {"distribution": "normal", "mean": 0.1, "stddev": 0.04}, "incidence": 0.1}
+        return_expectations = {"float": {"distribution": "normal", "mean": 35, "stddev": 15}, "incidence": 0.3}
         ),
         
     CVD_assess_latest_date = patients.with_these_clinical_events(

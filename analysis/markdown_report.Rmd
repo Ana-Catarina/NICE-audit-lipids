@@ -167,13 +167,15 @@ df_input %>%
 
 ```{r cvdriskhistogram}
 
+options(scipen = 999)
+
 df_input %>% 
-  filter(CVD_assess_latest_number < 1) %>% 
+  filter(between(CVD_assess_latest_number, 0, 1)) %>% 
   ggplot(aes(x = CVD_assess_latest_number)) + 
   geom_histogram()
 
 df_input %>% 
-  filter(CVD_assess_latest_number < 100) %>% 
+  filter(between(CVD_assess_latest_number, 1, 100)) %>% 
   ggplot(aes(x = CVD_assess_latest_number)) + 
   geom_histogram()
 

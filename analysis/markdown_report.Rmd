@@ -119,14 +119,6 @@ df_input %>%
   summarise_df_by_group(age_group)
 
 ```
-## N total statin prescriptions
-
-```{r totalstatins}
-
-df_input %>% 
-  summarise_df_by_group(statin_cat)
-
-```
 
 ## N total statin prescriptions (CVDPREVENT statin list)
 

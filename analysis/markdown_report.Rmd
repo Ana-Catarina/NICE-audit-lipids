@@ -46,7 +46,7 @@ summarise_df_by_group <- function(df, ...){
     group_by(...) %>% 
     summarise(n=n()) %>% 
     ungroup() %>% 
-    mutate("percentage" = n/sum(n)*100) %>%
+    mutate("percentage" = sprintf("%.2f%%", n/sum(n)*100)) %>%
     adorn_totals()
   }
 
@@ -61,8 +61,6 @@ summarise_df_by_group <- function(df, ...){
 nrow(df_input)
 
 ```
-
-
 
 ## N with CVD diagnosis 
 
@@ -238,8 +236,7 @@ df_input %>%
 
 df_input %>% 
   filter(
-         CVD_code_CVD_prevent == 1,
-         CKD_code == 1
+         CVD_code_CVD_prevent == 1 | CKD_code == 1
          ) %>% 
   summarise_df_by_group(cvd_statin_cat_last_6m) 
 

@@ -53,6 +53,18 @@
       "url": "https://codelists.opensafely.org/codelist/user/rob_w/cvd_prevent_cvd_definition/518ab0d9/",
       "downloaded_at": "2022-05-11 16:14:14.034545Z",
       "sha": "e97cb902b19a7088fa60029f32f5a367334abe7e"
+    },
+    "user-rob_w-non-statin-lipid-modifying-therapies.csv": {
+      "id": "user/rob_w/non-statin-lipid-modifying-therapies/0dade38d",
+      "url": "https://codelists.opensafely.org/codelist/user/rob_w/non-statin-lipid-modifying-therapies/0dade38d/",
+      "downloaded_at": "2022-05-19 14:28:30.575774Z",
+      "sha": "ea3e99d8ac0485987fd1588fe570b9fa762ff6c2"
+    },
+    "user-rob_w-non-statin-lipid-modifying-therapies-secondary.csv": {
+      "id": "user/rob_w/non-statin-lipid-modifying-therapies-secondary/427f89ed",
+      "url": "https://codelists.opensafely.org/codelist/user/rob_w/non-statin-lipid-modifying-therapies-secondary/427f89ed/",
+      "downloaded_at": "2022-05-19 14:46:52.669630Z",
+      "sha": "cc0410291b771a8529293270dd7fa73d6f5d34ea"
     }
   }
 }

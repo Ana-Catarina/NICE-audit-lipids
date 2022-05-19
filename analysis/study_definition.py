@@ -12,7 +12,7 @@ study = StudyDefinition(
     index_date = "2021-12-31",
     
     population = patients.satisfying("""
-                                     registered AND (pat_age < 85 AND pat_age > 17) AND (pat_sex = 'M' OR pat_sex = 'F')
+                                     registered AND (pat_age < 85 AND pat_age >= 40) AND (pat_sex = 'M' OR pat_sex = 'F')
                                      """,
                                      registered = patients.registered_as_of("last_day_of_year(index_date)"),
                                      pat_age = patients.age_as_of("last_day_of_year(index_date)"),
@@ -55,23 +55,25 @@ study = StudyDefinition(
                                                     return_expectations = {"category": {"ratios": {">": 0.1, "<": 0.2, "~": 0.7}}, "incidence" : 0.1}
                                                     ),
     
-    statins_issued = patients.with_these_medications(statin_codes,
-                                                         on_or_before = "last_day_of_year(index_date)",
-                                                         returning = "date",
-                                                         date_format = "YYYY-MM-DD",
-                                                         return_last_date_in_period = True,
-                                                         return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
-        ),
-        
-    cvdprevent_statins_issued = patients.with_these_medications(cvd_prevent_statin_codes,
-                                                         on_or_before = "last_day_of_year(index_date)",
-                                                         returning = "date",
-                                                         date_format = "YYYY-MM-DD",
-                                                         return_last_date_in_period = True,
-                                                         return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
-        ),
-        
     cvdprevent_statins_issued_last_6m = patients.with_these_medications(cvd_prevent_statin_codes,
+                                                         between = ["2021-07-01",
+                                                                    "last_day_of_year(index_date)"],
+                                                         returning = "date",
+                                                         date_format = "YYYY-MM-DD",
+                                                         return_last_date_in_period = True,
+                                                         return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
+        ),
+        
+    lipid_modifier_primary = patients.with_these_medications(lipid_modifier_primary,
+                                                         between = ["2021-07-01",
+                                                                    "last_day_of_year(index_date)"],
+                                                         returning = "date",
+                                                         date_format = "YYYY-MM-DD",
+                                                         return_last_date_in_period = True,
+                                                         return_expectations = {"date": {"earliest": "2017-01-01", "latest": "2022-01-01"}, "rate" : "uniform", "incidence": 0.2}
+        ),
+        
+    lipid_modifier_secondary = patients.with_these_medications(lipid_modifier_secondary,
                                                          between = ["2021-07-01",
                                                                     "last_day_of_year(index_date)"],
                                                          returning = "date",
@@ -86,12 +88,6 @@ study = StudyDefinition(
                                                    return_expectations = {"incidence": 0.1}
                                                    ),
     
-    CVD_code = patients.with_these_clinical_events(CVD_codes,
-                                                   on_or_before = "last_day_of_year(index_date)",
-                                                   returning = "binary_flag",
-                                                   return_expectations = {"incidence": 0.2}
-                                                   ),
-                                                   
     CVD_code_CVD_prevent = patients.with_these_clinical_events(cvd_prevent_cvd_definition,
                                                    on_or_before = "last_day_of_year(index_date)",
                                                    returning = "binary_flag",
@@ -103,17 +99,7 @@ study = StudyDefinition(
                                                    returning = "binary_flag",
                                                    return_expectations = {"incidence": 0.1}
                                                    ),
-                                                   
-    T2D_code = patients.with_these_clinical_events(T2D_codes,
-                                                   on_or_before = "last_day_of_year(index_date)",
-                                                   returning = "binary_flag",
-                                                   return_expectations = {"incidence": 0.2}
-                                                   ),
-                                                   
-    Overall_diab_code = patients.with_these_clinical_events(Overall_diab_codes,
-                                                   on_or_before = "last_day_of_year(index_date)",
-                                                   returning = "binary_flag",
-                                                   return_expectations = {"incidence": 0.2}
-                                                   ),     
+                                                  
+                                                  
 )
 

@@ -1,7 +1,7 @@
 version: '3.0'
 
 expectations:
-  population_size: 5000
+  population_size: 20000
 
 actions:
   generate_study_population:
@@ -23,19 +23,17 @@ actions:
     needs: [generate_study_population]
     config:
       variable_types:
-          CVD_assess_latest_date: date
-          statins_issued: date
-          cvdprevent_statins_issued: date
-          cvdprevent_statins_issued_last_6m: date
           age: int
           sex: categorical
           CVD_assess_latest_number: float
+          CVD_assess_latest_date: date
           CVD_assess_comparator: categorical
+          cvdprevent_statins_issued_last_6m: date
           CKD_code: binary
-          CVD_code: binary
+          CVD_code_CVD_prevent: binary
+          lipid_modifier_primary: date
+          lipid_modifier_secondary: date
           T1D_code: binary
-          T2D_code: binary
-          Overall_diab_code: binary
       output_path: output/cohort_reports_outputs
     outputs:
       moderately_sensitive:

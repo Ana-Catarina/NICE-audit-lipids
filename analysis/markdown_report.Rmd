@@ -43,8 +43,8 @@ df_input <- read_csv(here::here("output", "input.csv")) %>%
       TRUE ~ "Lipid modifier recorded in last 6m"
     ),
     "CVD_risk_score"  = case_when(
-      CVD_assess_latest_number > 20  ~ " > 20%",
-      CVD_assess_latest_number > 10  ~ " > 10%",
+      CVD_assess_latest_number >= 20  ~ " >= 20%",
+      CVD_assess_latest_number >= 10  ~ " >= 10%",
       CVD_assess_latest_number > 0  ~ " > 0%",
       (is.na(CVD_assess_latest_number)|CVD_assess_latest_number == 0) ~ "No CVD risk assessment number",
       TRUE ~ "Negative or Invalid Input"

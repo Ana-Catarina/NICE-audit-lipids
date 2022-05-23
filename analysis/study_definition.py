@@ -12,7 +12,7 @@ study = StudyDefinition(
     index_date = "2021-12-31",
     
     population = patients.satisfying("""
-                                     registered AND (pat_age < 85 AND pat_age >= 40) AND (pat_sex = 'M' OR pat_sex = 'F')
+                                     registered AND (pat_age < 85 AND pat_age >= 19) AND (pat_sex = 'M' OR pat_sex = 'F')
                                      """,
                                      registered = patients.registered_as_of("last_day_of_year(index_date)"),
                                      pat_age = patients.age_as_of("last_day_of_year(index_date)"),
